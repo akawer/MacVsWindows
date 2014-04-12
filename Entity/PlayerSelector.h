@@ -4,6 +4,7 @@
 #include <vector>
 #include <SFML/Window.hpp>
 #include <jr/Entity.h>
+#include <jr/Utils.h>
 #include "../Physics/NoPhysics.h"
 
 namespace mvw
@@ -26,7 +27,11 @@ class PlayerSelector : public jr::Entity
         int chosenOSId;
         bool isDone;
     };
+
     vector<PlayerChoice> playerChoices;
+    int delay;
+
+    void resetDelay();
 };
 
 }

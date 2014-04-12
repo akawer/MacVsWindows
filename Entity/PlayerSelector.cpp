@@ -14,7 +14,7 @@ PlayerSelector::PlayerSelector()
       playerChoices[i].chosenOSId = 0;
       playerChoices[i].isDone = false;
    } 
-               
+   resetDelay();
 }
 
 PlayerSelector::~PlayerSelector()
@@ -46,8 +46,14 @@ void PlayerSelector::startLevel()
   switchContext(s.getEntities());
 }
 
+void PlayerSelector::resetDelay()
+{
+  delay = 40;
+}
+
 void PlayerSelector::processInput()
 {
+  delay--;
   for(int i=0;i<playerChoices.size();i++)
   {
     int aButton = XboxInput::getState(playerChoices[i].controllerId, XboxInput::A_BUTTON);
@@ -58,11 +64,13 @@ void PlayerSelector::processInput()
     else if(bButton)
       playerChoices[i].isDone=false;
     
-    if(!playerChoices[i].isDone){
+    if(!playerChoices[i].isDone && delay <= 0){
       if(leftAnalogX > XboxInput::ANALOG_LEFT_X_THRESHOLD)
         playerChoices[i].chosenOSId = (playerChoices[i].chosenOSId + 1) % 3;
       if(leftAnalogX < -XboxInput::ANALOG_LEFT_X_THRESHOLD)
         playerChoices[i].chosenOSId = (playerChoices[i].chosenOSId - 1) % 3;
+
+      resetDelay();
     }
   }
 }
