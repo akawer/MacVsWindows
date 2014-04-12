@@ -31,7 +31,7 @@ void SensorRect::enterWorld(b2World* world)
 
 bool SensorRect::isTouched()
 {
-
+  //TODO - Need to have ContactListener set up
 }
 
 }

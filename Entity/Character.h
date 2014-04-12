@@ -16,7 +16,7 @@ using std::vector;
 class Character : public jr::Entity
 {
 	public:
-		Character(int playerId, vector< vec<float> >& spawnPoints);
+		Character(int playerId, vector<SpawnPoint*> spawnPoints);
 		~Character();
 
     virtual void update();
@@ -24,10 +24,12 @@ class Character : public jr::Entity
   private:
     int hp, lives;
     int playerId, controllerId;
-    vector< vec<float> > spawnPoints;
+    vector<SpawnPoint*> spawnPoints;
     CheckEnd* keepTrack;
 
-    void deadHandler();
+    void die();
+    vec<float> getOpenSpawn();
+    vec<float> getIth(int id, 
 };
 
 }

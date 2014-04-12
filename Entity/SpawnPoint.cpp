@@ -19,7 +19,7 @@ void SpawnPoint::update()
 
 bool SpawnPoint::isFree()
 {
-  SensorRect* sensor = static_cast<SensorRect*>(gcomp);
+  SensorRect* sensor = dynamic_cast<SensorRect*>(gcomp);
   return sensor->isTouched();
 }
 
