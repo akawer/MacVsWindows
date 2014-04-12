@@ -21,13 +21,12 @@ class Character : public jr::Entity
         virtual void update();
 
   private:
-    float x, y;
-    int hp,lifes;
+    int hp, lives;
+    int playerId, controllerId;
     vector< vec<float> > * spawnPoints;
-    void deadHandler();
     CheckEnd* keepTrack;
-    int controllerId;
-    int id;
+
+    void deadHandler();
 };
 
 }
