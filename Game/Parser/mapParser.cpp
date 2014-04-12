@@ -1,39 +1,44 @@
 #include "mapParser.h"
-#include<fstream>
+
 namespace mvw
 {
-	vec<float>[4] MapParser::getSpawnPoints()
-	{
-				  return spawnPoints;
-	}
-	Wall* MapParser::getPlatforms
-	{
-			   return platforms;
-	}
-	MapParser::Map()
-	{
-					this->platformsQuantity=0;
-					this->platforms=new Wall[1];
-	}
-	MapParser::Map(string fileName)
-	{
-			   std::ifstream in(fileName);
-			   in>>this->platformsQuantity;
-			   this->platforms=malloc(sizeof(Wall)*this->platformsQuantity);
-			   for(int i=0;i<this->platformsQuantity;i++)
-			   {
-					   float x,y,w,h;
-					   in>>x,y,w,h;
-					   this->platforms[i]=new Wall(w,h,x,y);
-			   }
-			   for(int i=0;i<4;i++)
-			   {
-					   in>>this->spawnPoints[i].x;
-					   in>>this->spawnPoints[i].y;
-			   }
-			   in.close();
-	}
-	int MapParser::getPlatformsQuantity()
-	{
-	}
+
+vector< vec<float> > MapParser::getSpawnPoints()
+{
+  return spawnPoints;
 }
+
+vector< Wall* > MapParser::getPlatforms()
+{
+  return platforms;
+}
+
+MapParser::MapParser()
+{
+}
+
+MapParser::MapParser(std::string fileName)
+{
+       std::ifstream in(fileName.c_str());
+       int qty;
+       in>>qty;
+       for(int i=0;i<qty;i++)
+       {
+           float x,y,w,h;
+             in>>x>>y>>w>>h;
+           this->platforms.push_back(new Wall(w,h,x,y));
+       }
+       in>>qty;
+       for(int i=0;i<qty;i++)
+       {
+         vec<float> temp;
+         in>>temp.x;
+         in>>temp.y;
+         this->spawnPoints.push_back(temp);
+       }
+       in.close();
+}
+
+
+}
+

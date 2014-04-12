@@ -1,24 +1,32 @@
 #ifndef PARSER_MAPPARSER_H
 #define PARSER_MAPPARSER_H
 
-#include "mapParser.h"
+#include <fstream>
+#include <vector>
 #include <jr/Utils.h>
-using jr::Utils::vec;
+#include "../../Entity/Wall.h"
+
 namespace mvw
 {
-	class MapParser
-	{
-          private:
-		          Wall* platforms;
-                  vec<float>[4] spawnPoints;
-                  int platformsQuantity;
-		  public:
-				 vec<float>[4] getSpawnPoints();
-				 Rectangle* getPlatforms();
-				 Map();
-				 Map(string fileName);
-				 int getPlatformsQuantity();
-	};
+
+using std::vector;
+using jr::Utils::vec;
+using mvw::Wall;
+
+class MapParser
+{
+    public:
+      MapParser();
+      MapParser(std::string fileName);
+
+      vector<Wall*> getPlatforms();
+      vector< vec<float> > getSpawnPoints();
+
+    private:
+      vector<Wall*> platforms;
+      vector< vec<float> > spawnPoints;
+};
+
 }
 
 #endif
