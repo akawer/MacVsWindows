@@ -21,7 +21,7 @@ class Character : public jr::Entity
 
     virtual void update();
 
-  private:
+  protected:
     int hp, lives;
     int playerId, controllerId;
     vector<SpawnPoint*> spawnPoints;
@@ -29,7 +29,7 @@ class Character : public jr::Entity
 
     void die();
     vec<float> getOpenSpawn();
-    vec<float> getIth(int id, 
+    vec<float> getIth(int id,SpawnPoint* spawnPoint);
 };
 
 }

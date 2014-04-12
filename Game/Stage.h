@@ -4,6 +4,9 @@
 #include <vector>
 #include <jr/Entity.h>
 #include "../Entity/Character.h"
+#include "../Entity/Mac.h"
+#include "../Entity/Windows.h"
+#include "../Entity/Linux.h"
 
 namespace mvw
 {

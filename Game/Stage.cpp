@@ -20,7 +20,19 @@ void Stage::setStageEntities(int level, vector<int> chosenCharacters)
   entities = parser.getPlatforms();
   for(std::size_t i=0; i<chosenCharacters.size(); i++)
   {
-    Character* newCharacter=new Character(i,parser.getSpawnPoints());
+    Character* newCharacter;
+    switch(chosenCharacters[i])
+    {
+            case 0:
+                 newCharacter=new Mac(i,parser.getSpawnPoints());
+                 break;
+            case 1:
+                 newCharacter=new Windows(i,parser.getSpawnPoints());
+                 break;
+            case 2:
+                 newCharacter=new Linux(i,parser.getSpawnPoints());
+                 break;
+    }
     entities.push_back(newCharacter);
     characters.push_back(newCharacter);
   }
