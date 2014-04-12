@@ -1,6 +1,6 @@
 #include "Box.h"
 
-namespace simple
+namespace mvw
 {
 
 Box::Box(float length, float x0, float y0)

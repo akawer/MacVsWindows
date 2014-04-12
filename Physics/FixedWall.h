@@ -4,7 +4,7 @@
 #include <Box2D/Box2D.h>
 #include <jr/Physics.h>
 
-namespace simple
+namespace mvw
 {
 
 class FixedWall : public jr::PhysicsComponent

@@ -1,6 +1,6 @@
 #include "FixedWall.h"
 
-namespace simple
+namespace mvw
 {
 
 FixedWall::FixedWall(float width, float height, float x0, float y0)

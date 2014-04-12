@@ -1,6 +1,6 @@
 #include "DynBox.h"
 
-namespace simple
+namespace mvw
 {
 
 DynBox::DynBox(float length, float x0, float y0)

@@ -1,6 +1,6 @@
 #include "Wall.h"
 
-namespace simple
+namespace mvw
 {
 
 Wall::Wall(float width, float height, float x0, float y0)

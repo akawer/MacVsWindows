@@ -6,7 +6,7 @@
 #include "../Graphics/RectShape.h"
 #include "../Physics/FixedWall.h"
 
-namespace simple
+namespace mvw
 {
 
 using jr::Utils::vec;

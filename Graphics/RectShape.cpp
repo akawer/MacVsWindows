@@ -1,6 +1,6 @@
 #include "RectShape.h"
 
-namespace simple
+namespace mvw
 {
 
 RectShape::RectShape(float x, float y)
