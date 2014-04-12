@@ -16,14 +16,15 @@ using std::vector;
 class Character : public jr::Entity
 {
 	public:
-		Character(int id,vector< vec<float> > * spawnPoints);
+		Character(int playerId, vector< vec<float> >& spawnPoints);
 		~Character();
-        virtual void update();
+
+    virtual void update();
 
   private:
     int hp, lives;
     int playerId, controllerId;
-    vector< vec<float> > * spawnPoints;
+    vector< vec<float> > spawnPoints;
     CheckEnd* keepTrack;
 
     void deadHandler();

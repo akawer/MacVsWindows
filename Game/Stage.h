@@ -1,22 +1,28 @@
 #ifndef GAME_STAGE_H
 #define GAME_STAGE_H
 
+#include <vector>
+#include <jr/Entity.h>
+#include "../Entity/Character.h"
+
 namespace mvw
 {
+
+using std::vector;
+using jr::Entity;
 
 class Stage
 {
 	public:
-		Stage();
-		Stage(int level,vector<int> chosenCharacters);
+		Stage(int level, vector<int> chosenCharacters);
 		~Stage();
-        void setStageEntities(int level, vector<int> chosenCharacters);
+
+    void setStageEntities(int level, vector<int> chosenCharacters);
 		vector<Entity*> & const getEntities();
 
   private:
-          vector<Entity*> entities;
-          vector<Character*> characters;
-          Game* game;
+    vector<Entity*> entities;
+    vector<Character*> characters;
 };
 
 }

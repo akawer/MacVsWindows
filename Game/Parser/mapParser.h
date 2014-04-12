@@ -3,9 +3,9 @@
 
 #include <fstream>
 #include <vector>
+#include <jr/Entity.h>
 #include <jr/Utils.h>
 #include "../../Entity/Wall.h"
-#include "../../Entity/Entity.h"
 
 namespace mvw
 {
@@ -22,7 +22,7 @@ class MapParser
       MapParser(char* fileName);
 
       vector<Entity*> getPlatforms();
-      vector< vec<float> > getSpawnPoints();
+      vector< vec<float> >& getSpawnPoints();
 
     private:
       vector<Entity*> platforms;

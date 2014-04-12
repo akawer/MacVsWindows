@@ -3,7 +3,7 @@
 namespace mvw
 {
 
-vector< vec<float> > MapParser::getSpawnPoints()
+vector< vec<float> >& MapParser::getSpawnPoints()
 {
   return spawnPoints;
 }
