@@ -29,10 +29,5 @@ void SensorRect::enterWorld(b2World* world)
   body->CreateFixture(&fixDef);
 }
 
-bool SensorRect::isTouched()
-{
-  //TODO - Need to have ContactListener set up
-}
-
 }
 

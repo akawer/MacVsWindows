@@ -46,7 +46,7 @@ vec<float> Character::getOpenSpawn()
   std::size_t curr = playerId;
   for(int i=0; i<spawnPoints.size(); i++){
     SpawnPoint* s = spawnPoints[i]; 
-    if(s->isFree())
+    if(!s->isTouching())
       return s->getPosition();
     curr = (curr + 1) % spawnPoints.size();
   }

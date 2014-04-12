@@ -20,6 +20,7 @@ class NoPhysics : public jr::PhysicsComponent
     void enterWorld(b2World* world);
     bbox<float> getBounds();
     vec<float> getPosition();
+    void setUserData(void* data);
 
     private:
       vec<float> pos;

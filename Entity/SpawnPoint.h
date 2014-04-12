@@ -15,7 +15,6 @@ class SpawnPoint : public jr::Entity
 		~SpawnPoint();
 
     virtual void update();
-    bool isFree();
 };
 
 }

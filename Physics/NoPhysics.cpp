@@ -22,6 +22,11 @@ vec<float> NoPhysics::getPosition()
   return pos;
 }
 
+void NoPhysics::setUserData(void* arg)
+{
+  (void)arg;
+}
+
 bbox<float> NoPhysics::getBounds()
 {
   bbox<float> b(pos.x, pos.x, pos.y, pos.y);

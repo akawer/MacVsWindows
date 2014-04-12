@@ -20,14 +20,13 @@ class PlayerSelector : public jr::Entity
     virtual void update();
 
 	private:
-            typedef struct _playerChoice
-            {
-                    int controllerId;
-                    int chosenOSId;
-                    bool isDone;
-            } playerChoice;
-            vector<int> getControllerIds();
-            vector<playerChoice> playerChoices;
+    class PlayerChoice {
+      public:
+        int controllerId;
+        int chosenOSId;
+        bool isDone;
+    };
+    vector<PlayerChoice> playerChoices;
 };
 
 }
