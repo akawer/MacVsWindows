@@ -8,7 +8,7 @@ vector< vec<float> > MapParser::getSpawnPoints()
   return spawnPoints;
 }
 
-vector< Wall* > MapParser::getPlatforms()
+vector< Entity* > MapParser::getPlatforms()
 {
   return platforms;
 }
@@ -17,9 +17,9 @@ MapParser::MapParser()
 {
 }
 
-MapParser::MapParser(std::string fileName)
+MapParser::MapParser(char* fileName)
 {
-       std::ifstream in(fileName.c_str());
+       std::ifstream in(fileName);
        int qty;
        in>>qty;
        for(int i=0;i<qty;i++)

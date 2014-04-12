@@ -5,6 +5,7 @@
 #include <vector>
 #include <jr/Utils.h>
 #include "../../Entity/Wall.h"
+#include "../../Entity/Entity.h"
 
 namespace mvw
 {
@@ -12,18 +13,19 @@ namespace mvw
 using std::vector;
 using jr::Utils::vec;
 using mvw::Wall;
+using mvw::Entity;
 
 class MapParser
 {
     public:
       MapParser();
-      MapParser(std::string fileName);
+      MapParser(char* fileName);
 
-      vector<Wall*> getPlatforms();
+      vector<Entity*> getPlatforms();
       vector< vec<float> > getSpawnPoints();
 
     private:
-      vector<Wall*> platforms;
+      vector<Entity*> platforms;
       vector< vec<float> > spawnPoints;
 };
 
