@@ -3,13 +3,14 @@
 
 #include "Character.h"
 #include <vector.h>
+#include <jr/Entity.h>
 
 using namespace std::vector;
 
 namespace mvw
 {
 
-class CheckEnd::Entity
+class CheckEnd : public jr::Entity
 {
 	public:
 		CheckEnd();
