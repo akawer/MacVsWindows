@@ -1,19 +1,25 @@
-#ifndef GAME_CHECKEND_H
-#define GAME_CHECKEND_H
+#ifndef ENTITY_CHECKEND_H
+#define ENTITY_CHECKEND_H
+
+#include "Character.h"
+#include <vector.h>
+
+using namespace std::vector;
 
 namespace mvw
 {
 
-class CheckEnd
+class CheckEnd::Entity
 {
 	public:
 		CheckEnd();
-		CheckEnd(Character* characters);
+		CheckEnd(vector<Character*> characters, Stage* stage);
 		~CheckEnd();
 		void IAmDead(int characterId);
+		virtual void update();
   private:
-          vector<Entity*> entities;
-          vector<Character*> characters;
+          vector<int> alive;
+          Stage* stage;
 };
 
 }
