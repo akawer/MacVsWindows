@@ -1,7 +1,7 @@
 #ifndef ENTITY_WINDOWS_H
 #define ENTITY_WINDOWS_H
 
-#include <vector.h>
+#include <vector>
 #include "SpawnPoint.h"
 #include "Character.h"
 
