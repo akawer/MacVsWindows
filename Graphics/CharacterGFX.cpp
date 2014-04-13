@@ -5,14 +5,12 @@ namespace mvw
 
 CharacterGFX::CharacterGFX(int id)
 {
-  playerType = id;
-
   //TODO - Use sf::Sprite here
   float x = 10.0;
   float y = 10.0;
   sf::Vector2f size(x, y);
   image.setSize(size);
-  sf::Color c(40,0,255);
+  sf::Color c(id,0,255);
   image.setFillColor(c);
   image.setOrigin(x/2, y/2);
 }

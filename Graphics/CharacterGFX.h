@@ -19,7 +19,6 @@ class CharacterGFX : public jr::GraphicsComponent
 
 	private:
     sf::RectangleShape image;
-    int playerType;
 };
 
 }
