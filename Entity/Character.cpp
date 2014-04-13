@@ -4,10 +4,9 @@ namespace mvw
 {
 
 Character::Character(int id, vector<SpawnPoint*> spawnPoints)
-//  : jr::Entity(CharacterGraphicsComponent(id),
-//               CharacterPhysics(A, B,
-//                                getIth(id, spawnPoints[id]).x,
-//                                getIth(id, spawnPoints[id]).y))
+  : jr::Entity(new CharacterGFX(id),
+               new CharacterPhysics(spawnPoints[numChars]).x,
+                                    spawnPoints[numChars]).y))
 {
   this->spawnPoints = spawnPoints;
   this->playerId = id;
@@ -22,6 +21,7 @@ void Character::update()
   vec<float> pos = pcomp->getPosition();
   if(hp <= 0 || pos.y < -40.0)
     die();
+  gcomp->drawWorld(pos.x, pos.y);
 }
 
 void Character::die()
@@ -51,5 +51,7 @@ vec<float> Character::getOpenSpawn()
     curr = (curr + 1) % spawnPoints.size();
   }
 }
+
+vec<float> Character::getIth(int id, vector<SpawnPoint*>
 
 }

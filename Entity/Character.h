@@ -26,10 +26,12 @@ class Character : public jr::Entity
     int playerId, controllerId;
     vector<SpawnPoint*> spawnPoints;
     CheckEnd* keepTrack;
+    static int numChars = 0;
 
     void die();
     vec<float> getOpenSpawn();
     vec<float> getIth(int id,SpawnPoint* spawnPoint);
+  
 };
 
 }

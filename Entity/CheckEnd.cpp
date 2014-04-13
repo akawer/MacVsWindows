@@ -4,6 +4,8 @@ namespace mvw
 {
 
 CheckEnd::CheckEnd()
+  : jr::Entity(new NoGraphics(),
+               new NoPhysics(0.0, 0.0))
 {
 }
 
@@ -19,7 +21,7 @@ CheckEnd::~CheckEnd()
 
 void CheckEnd::IAmDead(int characterId)
 {
-     alive[characterId]=0;
+   alive[characterId]=0;
 }
 
 void update()
@@ -35,11 +37,9 @@ void update()
   {
     //TODO - Spawn "WINNER" entity that will later switch context
     //       to a Player Selection Menu
-    vector<int> chosenOnes;
-    chosenOnes[0]=(int)(3*rand());
-    chosenOnes[1]=(int)(3*rand());
-    Stage s(1, chosenOnes);
-    switchContext(s.getEntities());
+    vector<jr::Entity*> ents;
+    ents.push_back(new PlayerSelector());
+    switchContext(ents);
   }
 }
 

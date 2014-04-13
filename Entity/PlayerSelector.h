@@ -5,6 +5,7 @@
 #include <SFML/Window.hpp>
 #include <jr/Entity.h>
 #include <jr/Utils.h>
+#include "../Graphics/PlayerSelectorGFX.h"
 #include "../Physics/NoPhysics.h"
 
 namespace mvw

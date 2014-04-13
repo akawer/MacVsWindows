@@ -4,6 +4,7 @@
 #include <vector.h>
 #include <jr/Entity.h>
 #include "Character.h"
+#include "PlayerSelector.h"
 #include "../Game/Stage.h"
 
 using std::vector;
