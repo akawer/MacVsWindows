@@ -24,6 +24,7 @@ class PlayerSelectorGFX : public jr::GraphicsComponent
 	private:
     sf::Image canvas;
     sf::Sprite sprite;
+    void drawPlayerOption(int id,int x,int y);
 };
 
 }
