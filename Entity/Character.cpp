@@ -170,6 +170,16 @@ void Character::controllerHandler()
                  falconPunch = 0;
                }
            }
+     }else if(filteredBitMask==JUMP&&moveToRight)
+     {
+                    vel=pcomp->getVelocity();
+                    vel.x=15;
+                    pcomp->setVelocity(vel);
+     }else if(filteredBitMask==JUMP&&moveToLeft)
+     {
+                    vel=pcomp->getVelocity();
+                    vel.x=-15;
+                    pcomp->setVelocity(vel);
      }
      
 }

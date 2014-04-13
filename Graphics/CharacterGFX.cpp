@@ -64,7 +64,10 @@ void CharacterGFX::jump(bool sameState,bool isLeft)
 {
      int baseAddress=JUMP_RIGHT_ANIM;
      if(isLeft) baseAddress=JUMP_LEFT_ANIM;
-     
+     /*if(!(baseAddress<=frameNumber&&frameNumber<=baseAddress+JUMP_ANIM_LENGTH-1))
+     {
+                                                                                 
+     }*/
      if(!sameState) frameNumber=baseAddress;
      else if(frameNumber!=baseAddress+JUMP_ANIM_LENGTH-1)          frameNumber++;
 }
