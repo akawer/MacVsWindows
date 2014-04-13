@@ -144,6 +144,16 @@ void Character::controllerHandler()
            ((CharacterGFX*)gcomp)->jump(true,animationStateBitMask&FACING_LEFT!=0);
            vel=pcomp->getVelocity();
            if(vel.y==0) animationStateBitMask &= ~JUMPING
+     }else if(filteredBitMask==0&&attack)
+     {
+           ((CharacterGFX*)gcomp)->attack(false,animationStateBitMask&FACING_LEFT!=0);
+           animationStateBitMask |= ATTACKING
+     }else if(filteredBitMask==ATTACKING)
+     {
+           if( ((CharacterGFX*)gcomp)->attack(true,animationStateBitMask&FACING_LEFT!=0) )
+           {
+               animationStateBitMask &= ~ATTACKING;
+           }
      }
      
 }

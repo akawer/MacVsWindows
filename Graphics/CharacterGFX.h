@@ -13,9 +13,12 @@
 #define STAND_BY_RIGHT_ANIM_LENGTH 1
 #define STAND_BY_LEFT_ANIM 12
 #define STAND_BY_LEFT_ANIM_LENGTH 1
-#define JUMP_RIGHT_ANIM 8
-#define JUMP_LEFT_ANIM 12
-#define JUMP_ANIM_LENGTH 4
+#define JUMP_RIGHT_ANIM 9
+#define JUMP_LEFT_ANIM 13
+#define JUMP_ANIM_LENGTH 3
+#define ATTACK_RIGHT_ANIM 24
+#define ATTACK_LEFT_ANIM 32
+#define ATTACK_ANIM_LENGTH 6
 
 namespace mvw
 {
@@ -30,6 +33,7 @@ class CharacterGFX : public jr::GraphicsComponent
 		void StandByLeft(bool sameState);
 		void StandByRight(bool sameState);
 		void jump(bool sameState,bool isLeft);
+		bool attack(bool sameState,bool isLeft);
 
   protected:
     sf::Drawable* getDrawable();
