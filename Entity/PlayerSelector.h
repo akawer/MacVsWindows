@@ -33,9 +33,9 @@ class PlayerSelector : public jr::Entity
     };
 
     vector<PlayerChoice> playerChoices;
-    int delay;
+    vector<int> delays;
 
-    void resetDelay();
+    void resetDelay(int i);
     bool allDone();
     void startLevel();
     void processInput();

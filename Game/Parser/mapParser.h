@@ -22,7 +22,7 @@ class MapParser
       MapParser(char* fileName);
 
       vector<Entity*> getPlatforms();
-      vector<SpawnPoint*>& getSpawnPoints();
+      vector<SpawnPoint*> getSpawnPoints();
 
     private:
       vector<Entity*> platforms;

@@ -27,8 +27,8 @@ void PlayerSelectorGFX::setPosition(int x, int y)
 
 void PlayerSelectorGFX::drawUsing(vector<int> choices)
 {
-     if(choices[0] < 3) drawPlayerOption(choices[0],250,116);
-     if(choices[1] < 3) drawPlayerOption(choices[1],250,532);
+     drawPlayerOption(choices[0],250,116);
+     drawPlayerOption(choices[1],250,532);
      texture.update(canvas);
      sprite.setTexture(texture);
      sprite.setTextureRect(sf::IntRect(0,0,1700,950));

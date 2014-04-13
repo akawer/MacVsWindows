@@ -8,7 +8,6 @@ WinnerEntity::WinnerEntity(int winnerId)
                new NoPhysics(0.0, 0.0))
 {
 	delay = 150;
-	//MUST SET PRIORITY TO HIGH
 }
 
 WinnerEntity::~WinnerEntity()
@@ -23,7 +22,6 @@ void WinnerEntity::update()
 		return;
 	}
 	//get ready to switch context (back to title screen)
-	}
 }
 
 

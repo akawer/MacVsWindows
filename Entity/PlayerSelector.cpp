@@ -1,5 +1,4 @@
 #include "PlayerSelector.h"
-#include <cstdio>
 
 namespace mvw
 {
@@ -19,8 +18,8 @@ PlayerSelector::PlayerSelector()
    for(std::size_t i=0; i<controllerIds.size(); i++){
      PlayerChoice p(controllerIds[i]);
      playerChoices.push_back(p);
-   } 
-   resetDelay();
+     delays.push_back(7);
+   }
 }
 
 PlayerSelector::~PlayerSelector()
@@ -30,7 +29,7 @@ PlayerSelector::~PlayerSelector()
 vector<int> PlayerSelector::getChoices()
 {
   vector<int> chosenOnes;
-  for(std::size_t i=0; i<playerChoices.size(); i++){
+  for(std::size_t i=0; i<playerChoices.size(); i++)
     chosenOnes.push_back(playerChoices[i].chosenOSId);
   return chosenOnes;
 }
@@ -56,21 +55,19 @@ bool PlayerSelector::allDone()
 
 void PlayerSelector::startLevel()
 {
-  printf("STARTINGLEVEL\n");
   Stage s(1,getChoices());
   switchContext(s.getEntities());
 }
 
-void PlayerSelector::resetDelay()
+void PlayerSelector::resetDelay(int i)
 {
-  delay = 7;
+  delays[i] = 7;
 }
 
 void PlayerSelector::processInput()
 {
   using jr::XboxInput;
 
-  delay--;
   for(std::size_t i=0;i<playerChoices.size();i++){
     bool a_down = XboxInput::getButton(playerChoices[i].controllerId, XboxInput::A);
     bool b_down = XboxInput::getButton(playerChoices[i].controllerId, XboxInput::B);
@@ -81,12 +78,13 @@ void PlayerSelector::processInput()
     else if(b_down)
       playerChoices[i].isDone=false;
     
-    if(!playerChoices[i].isDone && delay <= 0){
+    delays[i]--;
+    if(!(playerChoices[i].isDone) && delays[i] <= 0){
       if(leftAnalogX > 60.0)
         playerChoices[i].chosenOSId = (playerChoices[i].chosenOSId + 1) % 3;
       if(leftAnalogX < -60.0)
         playerChoices[i].chosenOSId = (playerChoices[i].chosenOSId - 1 + 3) % 3;
-      resetDelay();
+      resetDelay(i);
     }
   }
 }

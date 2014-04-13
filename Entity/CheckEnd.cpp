@@ -8,7 +8,7 @@ CheckEnd::CheckEnd(int numChars)
                new NoPhysics(0.0, 0.0))
 {
   for(int i=0; i<numChars; i++)
-    alive[i]=1;
+    alive.push_back(1);
 }
 
 CheckEnd::~CheckEnd()

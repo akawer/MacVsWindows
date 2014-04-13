@@ -15,7 +15,7 @@ Stage::~Stage()
 void Stage::setStageEntities(int level, vector<int> chosenCharacters)
 {
   char fileName[30];
-  sprintf(fileName, "Level%d.txt", level);
+  sprintf(fileName, "Levels/Level%d.txt", level);
   MapParser parser(fileName);
   entities = parser.getPlatforms();
 
@@ -46,7 +46,7 @@ void Stage::setStageEntities(int level, vector<int> chosenCharacters)
   Character::setCheckEnd(chkEnd);
 }
 
-vector<Entity*>& Stage::getEntities()
+vector<Entity*> Stage::getEntities()
 {
   return entities;
 }
