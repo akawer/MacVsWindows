@@ -9,6 +9,12 @@
 #include "../Graphics/CharacterGFX.h"
 #include "../Physics/CharacterPhysics.h"
 
+#define FACING_LEFT 1
+#define FACING_RIGHT 2
+#define ATTACKING 4
+#define JUMPING 8
+#define MOVING 16
+
 namespace mvw
 {
 
@@ -28,7 +34,9 @@ class Character : public jr::Entity
     static void setCheckEnd(CheckEnd* chkEnd);
 
   protected:
-    int hp, lives, playerId;
+    int hp, lives, playerId, animationStateBitMask;
+
+    void controllerHandler();
 
     void resetHealth();
     void die();

@@ -15,6 +15,7 @@ Character::Character(int typ)
   playerId = numChars++;
   lives = 3;
   resetHealth();
+  animationStateBitMask=FACING_LEFT;
 }
 
 void Character::setSpawns(vector<SpawnPoint*> spawns)
@@ -77,6 +78,46 @@ vec<float> Character::getOpenSpawn(Character* c)
     curr = (curr + 1) % spawnPoints.size();
   }
   return spawnPoints[curr]->getPosition();
+}
+
+void controllerHandler()
+{
+     int controllerId=getControllerId();
+     float leftAnalogX = XboxInput::getAxis(controllerId, XboxInput::LEFT_ANALOG_X);
+     float leftAnalogY = XboxInput::getAxis(controllerId, XboxInput::LEFT_ANALOG_Y);
+     bool attack=XboxInput::getButton(controllerId,XboxInput::A);
+     bool jump=(leftAnalogY>60);
+     bool moveToRight=(leftAnalogX>60);
+     bool moveToLeft=(leftAnalogX<-60);
+     
+     if(moveToRight){ animationStateBitMask&=(31-FACING_LEFT); animationStateBitMask|=FACING_RIGHT; }
+     if(moveToLeft){ animationStateBitMask&=(31-FACING_RIGHT); animationStateBitMask|=FACING_LEFT; }
+     
+     if(moveToRight
+         && (animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==0 || animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING ) )
+     {
+                    ((CharacterGFX*)gcomp)->moveRight( animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING | FACING_RIGHT ) );
+                    animationStateBitMask |= MOVING;
+     }
+     if(moveToLeft
+         && (animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==0 || animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING ) )
+     {
+                    ((CharacterGFX*)gcomp)->moveLeft( animationStateBitMask==MOVING | FACING_LEFT ) );
+                    animationStateBitMask |= MOVING;
+     }
+     
+     if(!moveToRight && animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING)
+     {
+                    ((CharacterGFX*)gcomp)->StandByRight(false);
+                     animationStateBitMask &= ~MOVING;
+     }
+     
+     if(!moveToLeft && animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING)
+     {
+                    ((CharacterGFX*)gcomp)->StandByLeft(false);
+                     animationStateBitMask &= ~MOVING;
+     }
+     
 }
 
 }
