@@ -60,5 +60,14 @@ void CharacterGFX::StandByRight(bool sameState)
      else           frameNumber = (checkFrame(frameNumber)-STAND_BY_RIGHT_ANIM) % STAND_BY_RIGHT_ANIM_LENGTH + STAND_BY_RIGHT_ANIM;
 }
 
+void jump(bool sameState,bool isLeft)
+{
+     int baseAddress=JUMP_RIGHT_ANIM;
+     if(isLeft) baseAddress=JUMP_LEFT_ANIM;
+     
+     if(!sameState) frameNumber=baseAddress;
+     else if(frameNumber!=baseAddress+JUMP_ANIM_LENGTH-1)          frameNumber++;
+}
+
 }
 

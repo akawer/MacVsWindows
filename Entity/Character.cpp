@@ -132,6 +132,18 @@ void Character::controllerHandler()
                     vel=pcomp->getVelocity();
                     vel.x=0;
                     pcomp->setVelocity(vel);
+     }else if(jump&& (filteredBitMask==MOVING || filteredBitMask==0))
+     {
+           ((CharacterGFX*)gcomp)->jump(false,animationStateBitMask&FACING_LEFT!=0);
+           animationStateBitMask |= JUMPING;
+           vel=pcomp->getVelocity();
+           vel.y=30;
+           pcomp->setVelocity(vel);
+     }else if(filteredBitMask==JUMPING)
+     {
+           ((CharacterGFX*)gcomp)->jump(true,animationStateBitMask&FACING_LEFT!=0);
+           vel=pcomp->getVelocity();
+           if(vel.y==0) animationStateBitMask &= ~JUMPING
      }
      
 }
