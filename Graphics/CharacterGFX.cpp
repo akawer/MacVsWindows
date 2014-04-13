@@ -68,7 +68,7 @@ void CharacterGFX::jump(bool sameState,bool isLeft)
      if(!(JUMP_LEFT_ANIM<=frameNumber&&frameNumber<=JUMP_LEFT_ANIM+JUMP_ANIM_LENGTH-1))   prevBaseAddress=JUMP_LEFT_ANIM;
      else prevBaseAddress=JUMP_RIGHT_ANIM;
      if(!sameState) frameNumber=baseAddress;
-     else if(frameNumber!=baseAddress+JUMP_ANIM_LENGTH-1)          frameNumber=frameNumber-prevBaseAddress+baseAddress+1;
+     else if(frameNumber-prevBaseAddress!=JUMP_ANIM_LENGTH-1)          frameNumber=frameNumber-prevBaseAddress+baseAddress+1;
 }
 
 bool CharacterGFX::attack(bool sameState,bool isLeft)
