@@ -5,14 +5,7 @@ namespace mvw
 
 CharacterGFX::CharacterGFX(int id)
 {
-  //TODO - Use sf::Sprite here
-  float x = 10.0;
-  float y = 10.0;
-  sf::Vector2f size(x, y);
-  image.setSize(size);
-  sf::Color c(id,0,255);
-  image.setFillColor(c);
-  image.setOrigin(x/2, y/2);
+  texture.loadFromFile("./Assets/Images/sprite.png");
 }
 
 CharacterGFX::~CharacterGFX()
@@ -21,12 +14,15 @@ CharacterGFX::~CharacterGFX()
 
 sf::Drawable* CharacterGFX::getDrawable()
 {
-  return &image;
+              sprite.setTexture(texture);
+              sprite.setTextureRect(sf::IntRect(123*(frameNumber%8),100*(frameNumber/8),123,100));
+              sprite.setColor(sf::Color(255,255,255,255));
+              return &sprite;
 }
 
 void CharacterGFX::setPosition(int x, int y)
 {
-  image.setPosition(x, y);
+  sprite.setPosition(x, y);
 }
 
 void CharacterGFX::moveRight(bool sameState)

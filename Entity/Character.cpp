@@ -92,30 +92,42 @@ void controllerHandler()
      
      if(moveToRight){ animationStateBitMask&=(31-FACING_LEFT); animationStateBitMask|=FACING_RIGHT; }
      if(moveToLeft){ animationStateBitMask&=(31-FACING_RIGHT); animationStateBitMask|=FACING_LEFT; }
-     
+     vec<float> vel;
      if(moveToRight
          && (animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==0 || animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING ) )
      {
                     ((CharacterGFX*)gcomp)->moveRight( animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING | FACING_RIGHT ) );
                     animationStateBitMask |= MOVING;
+                    vel=pcomp->getVelocity();
+                    vel.x=10;
+                    pcomp->setVelocity(vel);
      }
      if(moveToLeft
          && (animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==0 || animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING ) )
      {
                     ((CharacterGFX*)gcomp)->moveLeft( animationStateBitMask==MOVING | FACING_LEFT ) );
                     animationStateBitMask |= MOVING;
+                    vel=pcomp->getVelocity();
+                    vel.x=-10;
+                    pcomp->setVelocity(vel);
      }
      
      if(!moveToRight && animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING)
      {
                     ((CharacterGFX*)gcomp)->StandByRight(false);
                      animationStateBitMask &= ~MOVING;
+                    vel=pcomp->getVelocity();
+                    vel.x=0;
+                    pcomp->setVelocity(vel);
      }
      
      if(!moveToLeft && animationStateBitMask&(31-FACING_LEFT-FACING_RIGHT)==MOVING)
      {
                     ((CharacterGFX*)gcomp)->StandByLeft(false);
                      animationStateBitMask &= ~MOVING;
+                    vel=pcomp->getVelocity();
+                    vel.x=0;
+                    pcomp->setVelocity(vel);
      }
      
 }
