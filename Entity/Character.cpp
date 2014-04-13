@@ -13,6 +13,7 @@ Character::Character(int typ)
                                     spawnPoints[numChars]->getY()))
 {
   playerId = numChars++;
+  falconPunch = 0;
   lives = 3;
   resetHealth();
   animationStateBitMask=FACING_LEFT;
@@ -81,6 +82,15 @@ vec<float> Character::getOpenSpawn(Character* c)
   return spawnPoints[curr]->getPosition();
 }
 
+void Character::collideWith(Entity* ent)
+{
+  Entity::collideWith(ent);
+  DamageObject* pichazo = dynamic_cast<DamageObject*>(ent);
+  if(pichazo){
+    hp -= pichazo->getDmg();
+  }
+}
+
 void Character::controllerHandler()
 {
      int controllerId=getControllerId();
@@ -143,16 +153,22 @@ void Character::controllerHandler()
      {
            ((CharacterGFX*)gcomp)->jump(true,animationStateBitMask&FACING_LEFT!=0);
            vel=pcomp->getVelocity();
-           if(vel.y==0) animationStateBitMask &= ~JUMPING
+           if(vel.y==0) animationStateBitMask &= ~JUMPING;
      }else if(filteredBitMask==0&&attack)
      {
            ((CharacterGFX*)gcomp)->attack(false,animationStateBitMask&FACING_LEFT!=0);
-           animationStateBitMask |= ATTACKING
+           animationStateBitMask |= ATTACKING;
+           vel = gcomp->getPosition();
+           falconPunch = new DamageObject(15,vel.x, vel.y, moveToLeft);
      }else if(filteredBitMask==ATTACKING)
      {
            if( ((CharacterGFX*)gcomp)->attack(true,animationStateBitMask&FACING_LEFT!=0) )
            {
                animationStateBitMask &= ~ATTACKING;
+               if(falconPunch){
+                 falconPunch->scheduleDeletion();
+                 falconPunch = 0;
+               }
            }
      }
      

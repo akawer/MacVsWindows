@@ -6,6 +6,7 @@
 #include <jr/Utils.h>
 #include "CheckEnd.h"
 #include "SpawnPoint.h"
+#include "DamageObject.h"
 #include "../Graphics/CharacterGFX.h"
 #include "../Physics/CharacterPhysics.h"
 
@@ -35,6 +36,7 @@ class Character : public jr::Entity
 
   protected:
     int hp, lives, playerId, animationStateBitMask;
+    Entity* falconPunch;
 
     void controllerHandler();
 
