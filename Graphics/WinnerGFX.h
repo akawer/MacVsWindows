@@ -12,12 +12,13 @@ class WinnerGFX : public jr::GraphicsComponent
 		WinnerGFX(int winnerId);
 		~WinnerGFX();
 
-  protected:
-    sf::Drawable* getDrawable();
-    void setPosition(int x, int y);
+  	protected:
+    	sf::Drawable* getDrawable();
+    	void setPosition(int x, int y);
 
 	private:
-    int winnerId;
+    	int winnerId;
+    	sf::Text text;
 };
 
 }

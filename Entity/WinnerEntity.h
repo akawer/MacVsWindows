@@ -14,7 +14,12 @@ class WinnerEntity : public jr::Entity
 		WinnerEntity(int winnerId);
 		virtual ~WinnerEntity();
 
-    virtual void update();
+    	virtual void update();
+
+	private:
+		int delay;
+
+
 };
 
 }
