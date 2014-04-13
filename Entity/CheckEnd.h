@@ -5,7 +5,7 @@
 #include <jr/Entity.h>
 #include "WinnerEntity.h"
 #include "../Graphics/NoGraphics.h"
-#include "../Physics/NoPhysics.h"
+#include "../Physics/NoPhysicsRect.h"
 
 using std::vector;
 

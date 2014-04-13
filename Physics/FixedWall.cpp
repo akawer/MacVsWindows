@@ -24,6 +24,7 @@ void FixedWall::enterWorld(b2World* world)
   b2FixtureDef fixDef;
   fixDef.shape = &shape;
   fixDef.restitution = 0.01;
+  fixDef.friction = 1.0f;
 
   body = world->CreateBody(&bodyDef);
   body->CreateFixture(&fixDef);

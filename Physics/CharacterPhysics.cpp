@@ -20,7 +20,11 @@ void CharacterPhysics::enterWorld(b2World* world)
   bodyDef.fixedRotation = true;
 
   b2PolygonShape shape;
-  shape.SetAsBox(10.0/2, 10.0/2);
+  shape.SetAsBox(2.0, 5.0);
+  //10 pixels per meter
+  //100 pixels tall -> 10 meters
+  //20 pixels as half width
+  //40 pixels as width
 
   b2FixtureDef fixDef;
   fixDef.shape = &shape;

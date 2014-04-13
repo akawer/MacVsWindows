@@ -26,7 +26,7 @@ class Stage
 		~Stage();
 
     void setStageEntities(int level, vector<int> chosenCharacters);
-		vector<Entity*>  getEntities();
+		vector<Entity*> getEntities();
 
   private:
     vector<Entity*> entities;

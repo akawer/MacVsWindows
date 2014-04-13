@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <jr/Graphics.h>
+#include <jr/Utils.h>
 
 #define MOVE_RIGHT_ANIM 0
 #define MOVE_RIGHT_ANIM_LENGTH 8
@@ -34,6 +35,9 @@ class CharacterGFX : public jr::GraphicsComponent
             sf::Texture texture;
             sf::Sprite sprite;
             int frameNumber;
+            float ticker;
+
+            int checkFrame(int currFrame);
 };
 
 }

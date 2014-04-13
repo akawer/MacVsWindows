@@ -5,7 +5,7 @@ namespace mvw
 
 CheckEnd::CheckEnd(int numChars)
   : jr::Entity(new NoGraphics(),
-               new NoPhysics(0.0, 0.0))
+               new NoPhysicsRect(180.0, 105.0, 0.0, 0.0))
 {
   for(int i=0; i<numChars; i++)
     alive.push_back(1);
