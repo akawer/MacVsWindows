@@ -23,7 +23,7 @@ void CheckEnd::setDead(int characterId)
 void CheckEnd::update()
 {
   int total=0;
-  int winner;
+  int winner=0;
   for(std::size_t i=0; i<alive.size(); i++)
   {
     total += alive[i];

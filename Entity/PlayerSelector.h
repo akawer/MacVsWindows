@@ -5,7 +5,7 @@
 #include <SFML/Window.hpp>
 #include <jr/Entity.h>
 #include <jr/Utils.h>
-#include "../Physics/NoPhysics.h"
+#include "../Physics/NoPhysicsRect.h"
 #include "../Graphics/PlayerSelectorGFX.h"
 #include "../Game/Stage.h"
 
@@ -26,6 +26,7 @@ class PlayerSelector : public jr::Entity
 	private:
     class PlayerChoice {
       public:
+        PlayerChoice(int contId);
         int controllerId;
         int chosenOSId;
         bool isDone;
@@ -38,6 +39,7 @@ class PlayerSelector : public jr::Entity
     bool allDone();
     void startLevel();
     void processInput();
+    vector<int> getChoices();
 };
 
 }

@@ -18,11 +18,11 @@ class NoPhysics : public jr::PhysicsComponent
 		~NoPhysics();
 
     void enterWorld(b2World* world);
-    bbox<float> getBounds();
+    virtual bbox<float> getBounds();
     vec<float> getPosition();
     void setUserData(void* data);
 
-    private:
+    protected:
       vec<float> pos;
 };
 
