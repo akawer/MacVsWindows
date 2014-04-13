@@ -30,7 +30,7 @@ PlayerSelector::~PlayerSelector()
 vector<int> PlayerSelector::getChoices()
 {
   vector<int> chosenOnes;
-  for(std::size_t i=0; i<playerChoices.size(); i++)
+  for(std::size_t i=0; i<playerChoices.size(); i++){
     chosenOnes.push_back(playerChoices[i].chosenOSId);
   return chosenOnes;
 }
