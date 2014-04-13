@@ -1,36 +1,40 @@
 #ifndef ENTITY_CHARACTER_H
 #define ENTITY_CHARACTER_H
 
-#include <vector.h>
+#include <vector>
 #include <jr/Entity.h>
 #include <jr/Utils.h>
-#include "../Graphics/RectShape.h"
-#include "../Physics/DynBox.h"
+#include "CheckEnd.h"
+#include "SpawnPoint.h"
+#include "../Graphics/CharacterGFX.h"
+#include "../Physics/CharacterPhysics.h"
 
 namespace mvw
 {
 
-using jr::Utils::vec;
 using std::vector;
+using jr::Utils::vec;
+using jr::XboxInput;
 
 class Character : public jr::Entity
 {
 	public:
-		Character(int playerId, vector<SpawnPoint*> spawnPoints);
+		Character(int playerType);
 		~Character();
 
     virtual void update();
 
-  protected:
-    int hp, lives;
-    int playerId, controllerId;
-    vector<SpawnPoint*> spawnPoints;
-    CheckEnd* keepTrack;
-    static int numChars = 0;
+    static void setSpawns(vector<SpawnPoint*> spawns);
+    static void setCheckEnd(CheckEnd* chkEnd);
 
+  protected:
+    int hp, lives, playerId;
+
+    void resetHealth();
     void die();
-    vec<float> getOpenSpawn();
-    vec<float> getIth(int id,SpawnPoint* spawnPoint);
+    int getControllerId();
+    static vec<float> getOpenSpawn(Character* c);
+
   
 };
 

@@ -1,6 +1,6 @@
 #include "NoPhysics.h"
 
-namespace simple
+namespace mvw
 {
 
 NoPhysics::NoPhysics(float x0, float y0)

@@ -5,7 +5,7 @@ namespace mvw
 
 Stage::Stage(int level, vector<int> chosenCharacters)
 {
-   setStageEntities(level, chosenCharacters);
+  setStageEntities(level, chosenCharacters);
 }
 
 Stage::~Stage()
@@ -15,33 +15,40 @@ Stage::~Stage()
 void Stage::setStageEntities(int level, vector<int> chosenCharacters)
 {
   char fileName[30];
-  sprintf(fileName,"Level%d.txt",level);
+  sprintf(fileName, "Level%d.txt", level);
   MapParser parser(fileName);
   entities = parser.getPlatforms();
-  for(std::size_t i=0; i<chosenCharacters.size(); i++)
-  {
+
+  vector<SpawnPoint*> spawns = parser.getSpawnPoints();
+  Character::setSpawns(spawns);
+  for(std::size_t i=0; i<spawns.size(); i++)
+    entities.push_back(spawns[i]);
+
+  for(std::size_t i=0; i<chosenCharacters.size(); i++){
     Character* newCharacter;
-    switch(chosenCharacters[i])
-    {
-            case 0:
-                 newCharacter=new Mac(i,parser.getSpawnPoints());
-                 break;
-            case 1:
-                 newCharacter=new Windows(i,parser.getSpawnPoints());
-                 break;
-            case 2:
-                 newCharacter=new Linux(i,parser.getSpawnPoints());
-                 break;
+    switch(chosenCharacters[i]){
+      case 0:
+        newCharacter = new Mac();
+        break;
+      case 1:
+        newCharacter = new Windows();
+        break;
+      case 2:
+        newCharacter = new Linux();
+        break;
     }
     entities.push_back(newCharacter);
     characters.push_back(newCharacter);
   }
-  entities.push_back(new CheckEnd(characters));
+
+  CheckEnd* chkEnd = new CheckEnd(characters.size());
+  entities.push_back(chkEnd);
+  Character::setCheckEnd(chkEnd);
 }
 
-vector<Entity*> & const Stage::getEntities()
+vector<Entity*>& Stage::getEntities()
 {
-                return entities;
+  return entities;
 }
 
 }

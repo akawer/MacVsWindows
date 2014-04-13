@@ -1,11 +1,11 @@
 #ifndef ENTITY_CHECKEND_H
 #define ENTITY_CHECKEND_H
 
-#include <vector.h>
+#include <vector>
 #include <jr/Entity.h>
-#include "Character.h"
-#include "PlayerSelector.h"
-#include "../Game/Stage.h"
+#include "WinnerEntity.h"
+#include "../Graphics/NoGraphics.h"
+#include "../Physics/NoPhysics.h"
 
 using std::vector;
 
@@ -15,10 +15,9 @@ namespace mvw
 class CheckEnd : public jr::Entity
 {
 	public:
-		CheckEnd();
-		CheckEnd(vector<Character*> characters);
+		CheckEnd(int numChars);
 		~CheckEnd();
-		void IAmDead(int characterId);
+		void setDead(int characterId);
 		virtual void update();
 
   private:

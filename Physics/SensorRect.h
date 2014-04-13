@@ -10,7 +10,7 @@ namespace mvw
 class SensorRect : public jr::PhysicsComponent
 {
 	public:
-		SensorRect(float width, float height, float x0, float y0):
+		SensorRect(float width, float height, float x0, float y0);
 		~SensorRect();
 
     virtual void enterWorld(b2World* world);

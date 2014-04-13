@@ -7,6 +7,8 @@
 namespace mvw
 {
 
+using std::vector;
+
 class PlayerSelectorGFX : public jr::GraphicsComponent
 {
 	public:

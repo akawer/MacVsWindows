@@ -3,15 +3,11 @@
 namespace mvw
 {
 
-CheckEnd::CheckEnd()
+CheckEnd::CheckEnd(int numChars)
   : jr::Entity(new NoGraphics(),
                new NoPhysics(0.0, 0.0))
 {
-}
-
-CheckEnd::CheckEnd(vector<Character*> characters)
-{
-  for(std::size_t i=0;i<characters.size();i++)
+  for(int i=0; i<numChars; i++)
     alive[i]=1;
 }
 
@@ -19,29 +15,27 @@ CheckEnd::~CheckEnd()
 {
 }
 
-void CheckEnd::IAmDead(int characterId)
+void CheckEnd::setDead(int characterId)
 {
-   alive[characterId]=0;
+  alive[characterId]=0;
 }
 
-void update()
+void CheckEnd::update()
 {
   int total=0;
   int winner;
   for(std::size_t i=0; i<alive.size(); i++)
   {
-    total+=alive[i];
-    if(alive[i]==1) winner=i;
+    total += alive[i];
+    if(alive[i])
+      winner=i;
   }
-  if(total<=1)
+  if(total <= 1)
   {
-    //TODO - Spawn "WINNER" entity that will later switch context
-    //       to a Player Selection Menu
     vector<jr::Entity*> ents;
-    ents.push_back(new PlayerSelector());
+    ents.push_back(new WinnerEntity(winner));
     switchContext(ents);
   }
 }
 
 }
-#endif

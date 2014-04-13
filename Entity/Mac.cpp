@@ -3,9 +3,8 @@
 namespace mvw
 {
 
-using std::vector;
-
-Mac::Mac(int playerId, vector<SpawnPoint*> spawnPoints) : Character(playerId, spawnPoints)
+Mac::Mac()
+  : Character(0)
 {
 }
 
@@ -13,10 +12,6 @@ Mac::~Mac()
 {
 }
 
-virtual void Mac::update()
-{
-}
-
-};
 
 }
+

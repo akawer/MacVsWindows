@@ -3,9 +3,8 @@
 namespace mvw
 {
 
-using std::vector;
-
-Linux::Linux(int playerId, vector<SpawnPoint*> spawnPoints) : Character(playerId, spawnPoints)
+Linux::Linux()
+  : Character(2)
 {
 }
 
@@ -13,10 +12,6 @@ Linux::~Linux()
 {
 }
 
-virtual void Linux::update()
-{
-}
-
-};
 
 }
+

@@ -5,13 +5,15 @@
 #include <SFML/Window.hpp>
 #include <jr/Entity.h>
 #include <jr/Utils.h>
-#include "../Graphics/PlayerSelectorGFX.h"
 #include "../Physics/NoPhysics.h"
+#include "../Graphics/PlayerSelectorGFX.h"
+#include "../Game/Stage.h"
 
 namespace mvw
 {
 
 using std::vector;
+using jr::XboxInput;
 
 class PlayerSelector : public jr::Entity
 {
@@ -33,6 +35,9 @@ class PlayerSelector : public jr::Entity
     int delay;
 
     void resetDelay();
+    bool allDone();
+    void startLevel();
+    void processInput();
 };
 
 }

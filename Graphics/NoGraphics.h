@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <jr/Graphics.h>
 
-namespace simple
+namespace mvw
 {
 
 class NoGraphics : public jr::GraphicsComponent

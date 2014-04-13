@@ -5,7 +5,7 @@
 #include <jr/Physics.h>
 #include <jr/Utils.h>
 
-namespace simple
+namespace mvw
 {
 
 using jr::Utils::vec;

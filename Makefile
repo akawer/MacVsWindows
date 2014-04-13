@@ -2,7 +2,7 @@ CC=g++
 JRDIR=./jr
 CFLAGS=-c -Wall -I$(JRDIR)
 LDFLAGS=-lBox2D -lsfml-graphics -lsfml-window -lsfml-system -L$(JRDIR)/jr/lib -ljr
-SOURCES=$(wildcard Entity/*.cpp) $(wildcard Physics/*.cpp) $(wildcard Graphics/*.cpp) $(wildcard Game/*.cpp) $(wildcard Game/*/*.cpp)
+SOURCES=$(wildcard Entity/*.cpp) $(wildcard Physics/*.cpp) $(wildcard Graphics/*.cpp) $(wildcard Game/*/*.cpp) $(wildcard Game/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=out
 

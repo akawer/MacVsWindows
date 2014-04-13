@@ -6,27 +6,27 @@
 #include <jr/Entity.h>
 #include <jr/Utils.h>
 #include "../../Entity/Wall.h"
+#include "../../Entity/SpawnPoint.h"
 
 namespace mvw
 {
 
 using std::vector;
 using jr::Utils::vec;
+using jr::Entity;
 using mvw::Wall;
-using mvw::Entity;
 
 class MapParser
 {
     public:
-      MapParser();
       MapParser(char* fileName);
 
       vector<Entity*> getPlatforms();
-      vector< vec<float> >& getSpawnPoints();
+      vector<SpawnPoint*>& getSpawnPoints();
 
     private:
       vector<Entity*> platforms;
-      vector< vec<float> > spawnPoints;
+      vector<SpawnPoint*> spawnPoints;
 };
 
 }

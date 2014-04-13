@@ -1,6 +1,6 @@
 #include "NoGraphics.h"
 
-namespace simple
+namespace mvw
 {
 
 NoGraphics::NoGraphics()

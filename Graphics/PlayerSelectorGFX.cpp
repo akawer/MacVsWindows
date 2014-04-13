@@ -5,13 +5,14 @@ namespace mvw
 
 PlayerSelectorGFX::PlayerSelectorGFX()
 {
+
 }
 
 PlayerSelectorGFX::~PlayerSelectorGFX()
 {
 }
 
-sf::Drawable* getDrawable()
+sf::Drawable* PlayerSelectorGFX::getDrawable()
 {
   return &sprite;
 }
