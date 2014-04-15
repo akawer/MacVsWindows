@@ -39,6 +39,7 @@ class Character : public jr::Entity
     Entity* falconPunch;
 
     void controllerHandler();
+    virtual void collideWith(Entity* other);
 
     void resetHealth();
     void die();

@@ -142,7 +142,8 @@ void Character::controllerHandler()
                     vel=pcomp->getVelocity();
                     vel.x=0;
                     pcomp->setVelocity(vel);
-     }else if(jump&& (filteredBitMask==MOVING || filteredBitMask==0))
+     }
+     else if(jump&& (filteredBitMask==MOVING || filteredBitMask==0))
      {
            ((CharacterGFX*)gcomp)->jump(false,animationStateBitMask&FACING_LEFT!=0);
            animationStateBitMask |= JUMPING;
@@ -158,8 +159,8 @@ void Character::controllerHandler()
      {
            ((CharacterGFX*)gcomp)->attack(false,animationStateBitMask&FACING_LEFT!=0);
            animationStateBitMask |= ATTACKING;
-           vel = gcomp->getPosition();
-           falconPunch = new DamageObject(15,vel.x, vel.y, moveToLeft);
+           vel = pcomp->getPosition();
+           //falconPunch = new DamageObject(15,vel.x, vel.y, moveToLeft);
      }else if(filteredBitMask==ATTACKING)
      {
            if( ((CharacterGFX*)gcomp)->attack(true,animationStateBitMask&FACING_LEFT!=0) )
@@ -170,12 +171,12 @@ void Character::controllerHandler()
                  falconPunch = 0;
                }
            }
-     }else if(filteredBitMask==JUMP&&moveToRight)
+     }else if(filteredBitMask==JUMPING&&moveToRight)
      {
                     vel=pcomp->getVelocity();
                     vel.x=15;
                     pcomp->setVelocity(vel);
-     }else if(filteredBitMask==JUMP&&moveToLeft)
+     }else if(filteredBitMask==JUMPING&&moveToLeft)
      {
                     vel=pcomp->getVelocity();
                     vel.x=-15;
